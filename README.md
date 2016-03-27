@@ -1,6 +1,6 @@
 # ProGnosiX
 ===========
 
-Machoveschi Victor
-Mazilu Florin
-Odobescu Cristian
+* Machoveschi Victor
+* Mazilu Florin
+* Odobescu Cristian
