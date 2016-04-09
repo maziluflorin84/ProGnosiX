@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2016 at 09:30 AM
+-- Generation Time: Apr 09, 2016 at 12:16 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -42,8 +42,8 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `classes` (
   `ID` int(2) NOT NULL,
-  `course_id` int(2) NOT NULL,
-  `prof_id` int(2) NOT NULL,
+  `course_id` int(5) NOT NULL,
+  `prof_id` int(5) NOT NULL,
   `class_name` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
