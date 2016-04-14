@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>	
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>ProGnosiX</title>
+		<link rel="stylesheet" href="CSS/scholarly.css">
+		<link rel="stylesheet" href="CSS/prism-coy.css">
+	</head>
+	<body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
+		<header>
+			<p class="title">ProGnosiX</p>
+			<p class="subtitle">Facultatea de Informatica, Universitatea Alexandru Ioan Cuza, Iasi</p>
+		</header>
+		<article id="what" typeof="schema:Documentatie ProGnosiX" resource="#">
+			<h1>Documentatie ProGnosiX</h1>
+			<section>
+				<ol>
+					<li property="schema:author" typeof="sa:ContributorRole">
+						<span property="schema:author" typeof="schema:Person">
+							<span property="schema:givenName">Victor</span>
+							<span property="schema:familyName">Macoveschi</span>
+						</span>
+					</li>
+					<li property="schema:author" typeof="sa:ContributorRole">
+						<span property="schema:author" typeof="schema:Person">
+							<span property="schema:givenName">Florin</span>
+							<span property="schema:familyName">Mazilu</span>
+						</span>
+					</li>
+					<li property="schema:author" typeof="sa:ContributorRole">
+						<span property="schema:author" typeof="schema:Person">
+							<span property="schema:givenName">Cristian</span>
+							<span property="schema:familyName">Odobescu</span>
+						</span>
+					</li>
+				</ol>
+				<ol>
+					<li>
+						<a href="http://www.info.uaic.ro/bin/Main/" target="_blank" typeof="schema:Corporation">
+							<span property="schema:name">Facultatea de Informatica, Iasi</span>
+						</a>
+					</li>
+				</ol>
+				<ol>
+					<li>
+						<a href="#description" typeof="schema:Corporation">
+							<span property="schema:name">Descriere</span>
+						</a>
+					</li>
+					<li>
+						<a href="#technologies" typeof="schema:Corporation">
+							<span property="schema:name">Tehnologii folosite</span>
+						</a>
+					</li>
+					<li>
+						<a href="#bonus" typeof="schema:Corporation">
+							<span property="schema:name">Calculul bonusului</span>
+						</a>
+					</li>
+					<li>
+						<a href="#database" typeof="schema:Corporation">
+							<span property="schema:name">Baza de date</span>
+						</a>
+					</li>
+					<li>
+						<a href="#structure" typeof="schema:Corporation">
+							<span property="schema:name">Structura site-ului</span>
+						</a>
+					</li>
+					<li>
+						<a href="#distribution" typeof="schema:Corporation">
+							<span property="schema:name">Distributia muncii</span>
+						</a>
+					</li>
+					<li>
+						<a href="#references" typeof="schema:Corporation">
+							<span property="schema:name">Bibliografie</span>
+						</a>
+					</li>
+				</ol>
+		
+			</section>
+
+			<section typeof="sa:Abstract" id="abstract">
+				<a name="description">
+					<h2>Descriere</h2>
+				</a>
+				<p>
+					Acest proiect isi propune dezvoltarea unui site, care va gestiona informatii legate de realizarea unor prognoze privitoare la punctajele obtinute de studenti la probele de evaluare (activitati de laborator, examene de curs, proiecte) de la diferite discipline. Mai exact, pentru fiecare runda a prognozelor, un utilizator autentificat va putea “ghici” doar o singura data nota pe care o va lua la o disciplina. In cazul in care nota precizata de catre student	va coincide cu nota reala scrisa de profesor, se vor adauga P unitati in plus la punctaj, iar in caz contrar vor fi scazute M unitati. Punctajele finale vor fi afisate pentru toti studentii.
+				</p>
+			</section>
+			<section typeof="sa:MaterialsAndMethods" id="motivation">
+				<a name="technologies">
+					<h2>Tehnologii Folosite</h2>
+				</a>
+				<ul>
+					<li>
+						HTML/CSS/JavaScript: pentru a crea structura de baza	a site-ului nostru si pentru a o personaliza stilistic
+					</li>
+					<li>
+						PHP/Ajax: pentru partea de backend 
+					</li>
+					<li>
+						MySQL/XML: pentru stocarea de date
+					</li>
+					<li>
+						XAMP control panel pentru instalarea serverului Apache local, si a bazei de date
+					</li>
+					<li>
+						PHPStorm/Notepad++ editoare text
+					</li>
+					<li>
+						Platforma JIRA pentru distribuirea task-urilor
+					</li>
+					<li>
+						GitHub pentru project revision control
+					</li>
+					<li>
+						Balsamiq pentru realizarea schitelor paginilor
+					</li>
+				</ul>
+			</section>
+			<section typeof="sa:MaterialsAndMethods" id="motivation">
+				<a name="bonus">
+					<h2>Calculul bonusului</h2>
+				</a>
+				<p>
+					Calculul este realizat cu ajutorul notei profesorului, nota studentului, diferite date oferite de catre profesor (punctajul maxim al unei evaluari, un procent ce reprezinta zona din scara de valori a notei in care poate fi primit bonus, bonusul maxim care poate fi oferit celui ce estimeaza cu maxima precizie nota).
+				</p>
+				<ul>
+					<li>
+						PP - Punctaj Profesor
+					</li>
+					<li>
+						PS - Punctaj Student
+					</li>
+					<li>
+						PM - Punctaj Maxim
+					</li>
+					<li>
+						PRME - PRocent Marja Eroare
+					</li>
+					<li>
+						MPB - Maxim Puncte Bonus
+					</li>
+					<li>
+						MPM - Maxim Puncte Minus
+					</li>
+					<li>
+						PMEB - Puncte Marja Eroare Bonus
+					</li>
+					<li>
+						PBO - Puncte Bonus Oferite
+					</li>
+					<li>
+						PF - Punctaj Final
+					</li>
+				</ul>
+				<p style="text-align:center;">
+					<img src="Images/Formula.png" width="880">
+				</p>
+			</section>
+			<section typeof="sa:Results" id="definition">
+				<a name="database">
+					<h2>Baza de date</h2>
+				</a>
+				<p>
+					Baza de date va contine 5 tabele (admin, courses, professors si students) si va ajuta la  memorarea tuturor utilizatorilor inregistrati (profesori, studenti, admini).
+				</p>
+				<p>
+					Tabelul Admin va fi reprezentat printr-un ID unic, un nume si un prenume, email si o parola. Acest user are dreptul atat de a adauga profesori, studenti, materii noi, cat si de a modifica pe cei existenti.
+				</p>
+				<p style="text-align:center;">
+					<img src="Images/adminBD.png" width="880">
+				</p>
+				<p>
+					Tabelul Professors va fi constituit dintr-un ID unic, nume, initiala tatalui, un prenume, email, si o parola. Acesta are posibilitatea de a introduce notele, de a da startul perioadei de estimari din partea studentilor.
+				</p>
+				<p style="text-align:center;">
+					<img src="Images/profesoriBD.png" width="880">
+				</p>
+				<p>
+					Tabelul Students este format dintr-un ID unic, nume, initiala tatalui, prenume, email, anul in care studiaza, grupa la care este repartizat si parola de acces conform contuluia aferent. Acesta are posibilitatea de a estima note in momentul in care profesorul ii permite accesul.
+				</p>
+				<p style="text-align:center;">
+					<img src="Images/StudentiBD.png" width="880">
+				</p>
+				<p>
+					Tabelul Courses va fi reprezentata de un ID unic, un nume, anul si semestrul in care se preda disciplina aferent, ID-ul profesorului care preda, si trei campuri destinate numarului de evaluari setate pentru seminariile, proiectele si examenele unei materii. 
+				</p>
+				<p style="text-align:center;">
+					<img src="Images/CourseBD.png" width="880">
+				</p>
+				<p>
+					Tabelul Grades este format dintr-un ID unic, ID-ul materiilor, al profesorilor si al studentilor, tipul de evaluare (de exemplu: proiecte, laboratoare si examene de curs), numarul evaluarii, cat si cele 3 note: nota profesorului, nota „ghicita” de student si nota finala.
+				</p>
+				<p style="text-align:center;">
+					<img src="Images/GradesBD.png" width="880">
+				</p>
+				<p>Notele sunt retinute totodata intr-un fisier XML. Nota finala este generata automat avand notele "ghicite"-A, notele profesorilor-B, punctajul maxim al unei evaluari-C, marja de eroare a premierii-P, numarul maxim de puncte pe care il poate primi studentul in cazul in care ghiceste corect-M si aplicand formula de calcul</p>
+				<p>Schema relationala a bazei de date</p>
+				<p style="text-align:center;">
+					<img src="Images/SchemaRelationalaBD.png" width="500">
+				</p>
+			</section>
+			<section typeof="sa:Acknowledgements" id="acknowledgements">
+				<a name="structure">
+					<h2>Structura site-ului</h2>
+				</a>
+				<p style="text-align:center;">
+					<iframe src="//www.slideshare.net/slideshow/embed_code/key/4QaQPVn7zl9ypG" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/secret/4QaQPVn7zl9ypG" title="ProGnosiX mockup" target="_blank">ProGnosiX mockup</a> </strong> from <strong><a href="//www.slideshare.net/FlorinMazilu1" target="_blank">Florin Mazilu</a></strong> </div>
+				</p>
+				<!-- <p style="text-align:center;">
+					<a href="Resources/ProGnoSiX - Mockup.pdf" target="_blank">See PDF file!</a>
+				</p> -->
+			</section>
+			<section typeof="sa:Conclusion" id="conclusion">
+				<a name="distribution">
+					<h2>Distributia muncii</h2>
+				</a>
+				<ul>
+					<li>
+						Front-End
+						<ul>
+							<li>Implemetarea HTML / CSS / JavaScript : Victor Macoveschi, Cristian Odobescu, Florin Mazilu</li>
+						</ul>
+					</li>
+					<li>
+						Back-End
+						<ul>
+							<li>Arhitectura bazei de date : Victor Macoveschi, Cristian Odobescu, Florin Mazilu</li>
+							<li>Sectiunea Student : Cristian Odobescu</li>
+							<li>Sectiunea Admin : Victor Macoveschi</li>
+							<li>Sectiunea Profesor : Florin Mazilu</li>
+							<li>Sistemul de autentificare : Florin Mazilu</li>
+							<li>Comunicarea datelor din XML : Cristian Odobescu</li>
+							<li>Atom RSS : Victor Macoveschi</li>
+							<li>Integrarea limbajului R in PHP : Florin Mazilu</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section typeof="sa:ReferenceList" id="references">
+				<a name="references">
+					<h2>Bibliografie</h2>
+				</a>
+				<dl>
+					<dt>Atom Publishing Protocol</dt>
+					<dd id="ref-nyt" typeof="schema:ScholarlyArticle" resource="http://atomenabled.org/">
+						<a href="http://atomenabled.org/">Atom</a>
+					</dd>
+					<dt>JSONauts</dt>
+					<dd id="ref-sa-ontology" typeof="schema:ScholarlyArticle" resource="https://jsonauts.github.io/">
+						<a href="https://jsonauts.github.io/">JSON</a>
+					</dd>
+					<dt>Integrating R and PHP</dt>
+					<dd id="ref-vernacular" typeof="schema:ScholarlyArticle" resource="http://www.r-bloggers.com/integrating-php-and-r/">
+						<a href="https://jsonauts.github.io/">R and PHP</a>
+					</dd>
+				</dl>
+			</section>
+		</article>
+	</body>
+</html>

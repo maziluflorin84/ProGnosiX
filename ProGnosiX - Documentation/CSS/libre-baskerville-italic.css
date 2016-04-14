@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('./Fonts/librebaskerville-italic.eot');
+    src: url('./Fonts/librebaskerville-italic.eot?#iefix') format('embedded-opentype'),
+         url('./Fonts/librebaskerville-italic.woff2') format('woff2'),
+         url('./Fonts/librebaskerville-italic.woff') format('woff'),
+         url('./Fonts/librebaskerville-italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
