@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2016 at 12:16 PM
--- Server version: 10.1.10-MariaDB
+-- Generation Time: 14 Apr 2016 la 11:33
+-- Versiune server: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Structura de tabel pentru tabelul `admin`
 --
 
 CREATE TABLE `admin` (
@@ -37,20 +37,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classes`
---
-
-CREATE TABLE `classes` (
-  `ID` int(2) NOT NULL,
-  `course_id` int(5) NOT NULL,
-  `prof_id` int(5) NOT NULL,
-  `class_name` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courses`
+-- Structura de tabel pentru tabelul `courses`
 --
 
 CREATE TABLE `courses` (
@@ -67,7 +54,7 @@ CREATE TABLE `courses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grades`
+-- Structura de tabel pentru tabelul `grades`
 --
 
 CREATE TABLE `grades` (
@@ -85,7 +72,7 @@ CREATE TABLE `grades` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `professors`
+-- Structura de tabel pentru tabelul `professors`
 --
 
 CREATE TABLE `professors` (
@@ -101,7 +88,7 @@ CREATE TABLE `professors` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Structura de tabel pentru tabelul `students`
 --
 
 CREATE TABLE `students` (
@@ -125,12 +112,6 @@ CREATE TABLE `students` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `classes`
---
-ALTER TABLE `classes`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `courses`
@@ -165,11 +146,6 @@ ALTER TABLE `students`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `classes`
---
-ALTER TABLE `classes`
-  MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `courses`
 --
