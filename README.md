@@ -1,7 +1,7 @@
 # ProGnosiX
 ===========
 ## Next
-- [ ] Create HTML/CSS header and footer - Florin
+- [X] Create HTML/CSS header and footer - Florin
 - [ ] Create Login page - Florin
 
 ### Team
