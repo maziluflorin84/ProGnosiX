@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2016 at 11:59 PM
+-- Generation Time: May 15, 2016 at 09:03 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID`, `first_name`, `last_name`, `email`, `password`) VALUES
-(1, 'Florin', 'Mazilu', 'maziluflorin84@gmail.com', 'e832690c749fa9ae8a0dd6c0c2bcb348');
+(1, 'Florin', 'Mazilu', 'maziluflorin84@gmail.com', 'fd2c1dc3b51b086adcc4f1dffb710e8a');
 
 -- --------------------------------------------------------
 
@@ -97,8 +97,8 @@ CREATE TABLE `professors` (
 --
 
 INSERT INTO `professors` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `confirmed`) VALUES
-(1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'e832690c749fa9ae8a0dd6c0c2bcb348', 1),
-(2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'e832690c749fa9ae8a0dd6c0c2bcb348', 0);
+(1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
+(2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 0);
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `year`, `class`, `password`, `confirmed`) VALUES
-(1, 'Florin', 'L', 'Mazilu', 'florin.mazilu@info.uaic.ro', 2, 'B5', 'e832690c749fa9ae8a0dd6c0c2bcb348', 1);
+(1, 'Florin', 'L', 'Mazilu', 'florin.mazilu@info.uaic.ro', 2, 'B5', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1);
 
 --
 -- Indexes for dumped tables

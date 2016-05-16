@@ -14,4 +14,10 @@
 	<div class="border">
 		<span class="menu_button">Set Grades</span>
 	</div>
+	<div class="logout">
+		<span class="logout">
+			User: <?php echo return_name($_SESSION['user_id'], $_SESSION['account_type']).' - ' ?>
+			<a class="logout" href="logout.php">Logout</a>
+		</span>
+	</div>
 </div>

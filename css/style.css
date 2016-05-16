@@ -59,6 +59,40 @@ a,p,h1,h2 {
 	height: 30px;
 	width: auto;
 }
+div.logout {
+	text-align: center;
+	display: inline-block;
+	padding: 2px 5px;
+	margin: 0px 3px;
+	position: absolute;
+	float: right;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 82%;
+}
+span.logout {
+	font-family: Lobster, cursive;
+	font-size: 15px;
+	vertical-align: middle;
+	height: 30px;
+	width: auto;
+	color: #FFFFFF;
+}
+a.logout {
+	text-decoration: none;
+}
+a.logout:link {
+	color: #E0E0DC;
+}
+a.logout:visited {
+	color: #E0E0DC;
+}
+a.logout:hover {
+	color: #D9853B;
+}
+a.logout:active {
+	color: #E0E0DC;
+}
 
 /* ----- article styles ----- */
 #content {

@@ -2,7 +2,7 @@
 ===========
 ## Next
 - [X] Create HTML/CSS header and footer - Florin
-- [ ] Create Login page - Florin
+- [X] Create Login page - Florin
 
 ### Team
 * Machoveschi Victor
