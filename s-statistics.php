@@ -7,6 +7,8 @@ if (!logged_in()) {
 include 'includes/overall/header.php';
 ?>
 
-	<h2>Students page</h2>
+	<div>
+		<h2>Students Page - Statistics</h2>
+	</div>
 
 <?php include 'includes/overall/footer.php' ?>

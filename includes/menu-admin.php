@@ -1,13 +1,13 @@
 <div id="menu_box">
-	<div class="border">
+	<a href="a-add.php" class="<?php echo (basename($_SERVER['PHP_SELF'])=='a-add.php' ? 'border_on' : 'border'); ?>">
 		<span class="menu_button">Add</span>
-	</div>
-	<div class="border">
+	</a>
+	<a href="a-users.php" class="<?php echo (basename($_SERVER['PHP_SELF'])=='a-users.php' ? 'border_on' : 'border'); ?>">
 		<span class="menu_button">Users</span>
-	</div>
-	<div class="border">
+	</a>
+	<a href="a-courses.php" class="<?php echo (basename($_SERVER['PHP_SELF'])=='a-courses.php' ? 'border_on' : 'border'); ?>">
 		<span class="menu_button">Courses</span>
-	</div>
+	</a>
 	<div class="logout">
 		<span class="logout">
 			User: <?php echo return_name($_SESSION['user_id'], $_SESSION['account_type']).' - ' ?>

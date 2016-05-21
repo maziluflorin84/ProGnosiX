@@ -7,6 +7,6 @@ if (!logged_in()) {
 include 'includes/overall/header.php';
 ?>
 
-	<h2>Professors page</h2>
+<h2>Admin Page - Courses</h2>
 
 <?php include 'includes/overall/footer.php' ?>

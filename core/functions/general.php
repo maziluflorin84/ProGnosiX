@@ -22,3 +22,11 @@ function return_name($user_id, $account_type) {
 	$name = $names['first_name']." ".$names['last_name'];
 	return $name;
 }
+
+function output_errors($errors) {
+	$output = array();
+	foreach ($errors as $error) {
+		$output[] = '<li style="color: #ff0000; font-size: 14px;">'.$error.'</li>';
+	}
+	return implode('', $output);
+}

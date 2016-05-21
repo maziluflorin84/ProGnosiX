@@ -41,7 +41,6 @@ a,p,h1,h2 {
 	transform: translate(-50%, -50%);
 }
 .border {
-	background-color: #D9853B;
 	text-align: center;
 	border-style: solid;
 	border-color: #BDBDBB;
@@ -50,6 +49,25 @@ a,p,h1,h2 {
 	display: inline-block;
 	padding: 2px 5px;
 	margin: 0px 3px;
+	text-decoration: none;
+}
+a.border:link {
+	background-color: #D9853B;
+}
+a.border:hover {
+	background-color: #8E380D;
+}
+.border_on {
+	background-color: #8E380D;
+	text-align: center;
+	border-style: solid;
+	border-color: #BDBDBB;
+	border-radius: 5px;
+	border-width: 1px;
+	display: inline-block;
+	padding: 2px 5px;
+	margin: 0px 3px;
+	text-decoration: none;
 }
 .menu_button {
 	font-family: Lobster, cursive;
@@ -76,7 +94,7 @@ span.logout {
 	vertical-align: middle;
 	height: 30px;
 	width: auto;
-	color: #FFFFFF;
+	color: #E0E0DC;
 }
 a.logout {
 	text-decoration: none;
