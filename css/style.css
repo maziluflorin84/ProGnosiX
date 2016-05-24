@@ -83,10 +83,10 @@ div.logout {
 	padding: 2px 5px;
 	margin: 0px 3px;
 	position: absolute;
-	float: right;
+	/*float: right;*/
 	top: 50%;
 	transform: translateY(-50%);
-	left: 82%;
+	right: 0%;
 }
 span.logout {
 	font-family: Lobster, cursive;
@@ -161,4 +161,31 @@ a.logout:active {
 }
 #login input {
 	margin-top: 5px;
+}
+/* -- admin add form -- */
+.side-form-left {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#add-form {
+    list-style: none;
+    padding: 0;
+}
+#add-form li {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+#add-form input {
+    margin-top: 5px;
+}
+
+.side-form-right {
+    display: inline-block;
+    vertical-align: top;
+}
+.side-right-inner {
+    margin: 16px 0;
+    font-size: 15px;
 }
