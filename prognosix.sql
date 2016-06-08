@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2016 at 09:03 AM
+-- Generation Time: Jun 09, 2016 at 12:58 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -53,10 +53,19 @@ CREATE TABLE `courses` (
   `year` int(2) NOT NULL,
   `semester` int(2) NOT NULL,
   `head_prof_id` int(5) NOT NULL,
+  `assist_prof_ids` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `course_ev_no` int(2) NOT NULL,
   `seminar_ev_no` int(2) NOT NULL,
   `project_ev_no` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`course_id`, `course_name`, `year`, `semester`, `head_prof_id`, `assist_prof_ids`, `course_ev_no`, `seminar_ev_no`, `project_ev_no`) VALUES
+(1, 'Tehnologii WEB', 2, 2, 3, '4;5', 1, 3, 1),
+(2, 'Proiectarea Algoritmilor', 1, 2, 1, '4', 2, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -98,7 +107,10 @@ CREATE TABLE `professors` (
 
 INSERT INTO `professors` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `confirmed`) VALUES
 (1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
-(2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 0);
+(2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 0),
+(3, 'Sabin-Corneliu', 'M', 'Buraga', 'busaco@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
+(4, 'Alexandru', 'A', 'Coman', 'coman.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
+(5, 'Andrei', 'C', 'Panu', 'panu.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1);
 
 -- --------------------------------------------------------
 
@@ -172,7 +184,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `course_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `course_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `grades`
 --
@@ -182,7 +194,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `professors`
 --
 ALTER TABLE `professors`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `students`
 --

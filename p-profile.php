@@ -7,6 +7,25 @@ if (!logged_in()) {
 include 'includes/overall/header.php';
 
 $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
+
+$result = $mysqli->query("SELECT * FROM `courses`");
+$rows = array();
+$ids = array();
+while ($row = $result->fetch_assoc()) {
+//				echo '<br>'.$row['course_id'];
+//				echo '<br>'.$row['course_name'];
+//				echo '<br>'.$row['year'];
+//				echo '<br>'.$row['semester'];
+//				echo '<br>'.$row['assist_prof_ids'];
+	if ($row['head_prof_id'] == $data['ID']) {
+		$rows[] = $row;
+	} else {
+		$ids = explode(';', $row['assist_prof_ids']);
+		foreach ($ids as $value)
+			if ($value == $data['ID'])
+				$rows[] = $row;
+	}
+}
 ?>
 
 	<h2>Profile</h2>
@@ -25,7 +44,7 @@ $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
 		</tr>
 		<tr>
 			<td style="width: 25%">Activated</td>
-			<td><?php echo ($data['confirmed']==1 ? 'Yes' : 'No'); ?></td>
+			<td><?php echo ($data['confirmed'] == 1 ? 'Yes' : 'No'); ?></td>
 		</tr>
 	</table>
 
@@ -37,18 +56,23 @@ $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
 			<th>Classes</th>
 			<th>Edit Courses</th>
 		</tr>
-		<tr>
-			<td>asdfdf</td>
-			<td>asdfdf</td>
-			<td>asdfdf</td>
-			<td>asdfdf</td>
-		</tr>
-		<tr>
-			<td>asdfdf</td>
-			<td>asdfdf</td>
-			<td>asdfdf</td>
-			<td>asdfdf</td>
-		</tr>
+		<?php
+		foreach ($rows as $prof) {
+			echo
+			'<tr>'.
+				'<td>'.$prof['course_name'].'</td>'.
+				'<td>'.$prof['head_prof_id'].'</td>'.
+				'<td></td>';
+			if ($prof['head_prof_id'] == $data['ID'])
+				echo
+				'<td><input type="submit" value="Edit"></td>';
+			else
+				echo
+				'<td>N/A</td>';
+			echo
+			'</tr>';
+		}
+		?>
 	</table>
 
-<?php include 'includes/overall/footer.php' ?>
+<?php include 'includes/overall/footer.php'; ?>

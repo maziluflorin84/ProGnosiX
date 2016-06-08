@@ -8,7 +8,7 @@ include 'includes/overall/header.php';
 $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
 ?>
 
-	<h2>Edit Profile</h2>
+	<h2>Profile</h2>
     <table class="table-data" cellspacing="0">
         <tr>
             <td style="width: 30%"><b>First Name</b></td>
