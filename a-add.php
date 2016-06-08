@@ -5,6 +5,11 @@ if (!logged_in()) {
 	exit();
 }
 include 'includes/overall/header.php';
+global $mysqli;
+$results=$mysqli->query("SELECT `ID`,`first_name`,`last_name` FROM `professors`");
+$data = array();
+while($row = $results->fetch_assoc())
+    $data[] = $row;
 ?>
 <h2>Admin Page - Add</h2>
     <div class="inner">
@@ -13,45 +18,29 @@ include 'includes/overall/header.php';
                 <ul id='add-form'>
                     <li>
                         Choose what to add:<br>
-                        <input id="1" type="radio" name="choice" value="student">
-                        <label for="1">student</label>
+                        <label><input type="radio" onclick='addFunction(1,<?php echo json_encode($data); ?>);' name="my-radio">student</label>
                         <br>
-                        <input id="2" type="radio" name="choice" value="professor">
-                        <label for="2">professor</label>
+                        <label><input type="radio" onclick='addFunction(2,<?php echo json_encode($data); ?>);' name="my-radio">professor</label>
                         <br>
-                        <input id="3" type="radio" name="choice" value="course">
-                        <label for="3">course</label>
-                        <br>
+                        <label><input type="radio" onclick='addFunction(3,<?php echo json_encode($data); ?>);' name="my-radio">course</label>
+
                     </li>
-
-<!--                <li>-->
-<!--                    First Name:<br>-->
-<!--                    <input type="text" name="first_name" style="width: 200px;">-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    Father Initial:<br>-->
-<!--                    <input type="text" name="parent_init" style="width: 200px;">-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    Last Name:<br>-->
-<!--                    <input type="text" name="last_name" style="width: 200px;">-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    First Name:<br>-->
-<!--                    <input type="text" name="first_name" style="width: 200px;">-->
-<!--                </li>-->
-
                 </ul>
             </div>
+
             <div class="side-form-right">
                 <div class="side-right-inner">
-                    hello<br>
-                    hello<br>
-                    hello<br>
-                    hello<br>
-                    hello<br>
+                    <div id="load-form">
+
+                    </div>
                 </div>
             </div>
+<!---->
+<!--            <div id="load-form">-->
+<!---->
+<!--            </div>-->
+
+
         </form>
     </div>
 <?php include 'includes/overall/footer.php' ?>

@@ -1,0 +1,39 @@
+/* -- student profile -- */
+.table-data {
+    width: 50%;
+    margin: 10px 0;
+    border: 2px solid #BDBDBB;
+    border-right-style: none;
+    font-size: 11px;
+}
+.table-data td {
+    padding: 5px 10px;
+    background-color: #F2F2F2;
+    border-right: 2px solid #BDBDBB;
+}
+
+.table-data th {
+    padding: 5px 10px;
+    border-right: 2px solid #BDBDBB;
+    border-bottom: 2px solid #BDBDBB;
+    text-align: center;
+    background-color: #E0E0E0;
+}
+
+#password-save {
+     list-style: none;
+     padding: 0;
+ }
+#password-save li{
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+#password-save input {
+    margin-top: 5px;
+}
+
+.confirm-message{
+    margin: 0;
+    padding: 0;
+    font-size:0.8em;
+ }
