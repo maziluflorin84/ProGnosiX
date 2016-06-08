@@ -4,7 +4,6 @@
 	display: inline-block;
 	vertical-align: top;
 }
-
 #add-form {
 	list-style: none;
 	padding: 0;
@@ -24,4 +23,39 @@
 .side-right-inner {
 	margin: 16px 0;
 	font-size: 15px;
+}
+
+/* -- table style -- */
+.table-data {
+    width: 50%;
+    margin: 10px 0;
+    border: 2px solid #BDBDBB;
+    border-right-style: none;
+    font-size: 11px;
+}
+.table-data td {
+    padding: 5px 10px;
+    background-color: #F2F2F2;
+    border-right: 2px solid #BDBDBB;
+}
+
+.table-data th {
+    padding: 5px 10px;
+    border-right: 2px solid #BDBDBB;
+    border-bottom: 2px solid #BDBDBB;
+    text-align: center;
+    background-color: #E0E0E0;
+}
+
+
+.form-list {
+    list-style: none;
+    padding: 0;
+}
+.form-list li {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.form-list input {
+    margin-top: 5px;
 }

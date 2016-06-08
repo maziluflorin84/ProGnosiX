@@ -17,6 +17,8 @@ if (logged_in()) {
 	<title>ProGnosiX</title>
 	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/a-functions.js"></script>
+    <script type="text/javascript" src="js/s-functions.js"></script>
 	<?php
 	if (isset($other_style))
 		echo $other_style;
