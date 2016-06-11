@@ -55,17 +55,16 @@ while ($row = $result->fetch_assoc()) {
 				<th>Course Name</th>
 				<th>Head Professor</th>
 				<th>Classes</th>
-				<th>Edit Courses</th>
+				<th>Edit Course</th>
 			</tr>
 			<?php
 			foreach ($rows as $prof) {
-				// $prof['head_prof_id']
 				echo
 				'<tr>'.
 					'<td>'.$prof['course_name'].'</td>'.
 					'<td>'.$prof['head_prof_name'].'</td>'.
 					'<td></td>';
-				if ($prof['head_prof_id'] == $data['ID'])
+				if ($prof['head_prof_id'] == $user_id)
 					echo
 					'<td><input type="submit"  onclick=\'addEditForm('.json_encode($prof).')\' value="Edit"></td>';
 				else

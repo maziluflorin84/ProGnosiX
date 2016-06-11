@@ -4,14 +4,13 @@
 	margin: 10px 0;
 	border: 2px solid #BDBDBB;
 	border-right-style: none;
-	font-size: 11px;
+	font-size: 12px;
 }
 .table-data td {
 	padding: 5px 10px;
 	background-color: #F2F2F2;
 	border-right: 2px solid #BDBDBB;
 }
-
 .table-data th {
 	padding: 5px 10px;
 	border-right: 2px solid #BDBDBB;
@@ -19,22 +18,26 @@
 	text-align: center;
 	background-color: #E0E0E0;
 }
+.table-data input {
+	font-size: 12px;
+}
 
 .side-form-left {
-	width: 50%;
+	width: 60%;
 	display: inline-block;
 	vertical-align: top;
 }
 #form-list {
 	list-style: none;
 	padding: 0;
+	font-size: 12px;
 }
 #form-list li {
 	margin-bottom: 10px;
-	font-size: 15px;
 }
 #form-list input {
 	margin-top: 5px;
+	font-size: 12px;
 }
 .side-form-right {
 	display: inline-block;
@@ -42,5 +45,5 @@
 }
 .side-right-inner {
 	margin: 0 0 16px 20px;
-	font-size: 15px;
+	/*font-size: 11px;*/
 }

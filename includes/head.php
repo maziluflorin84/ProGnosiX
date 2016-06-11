@@ -1,15 +1,22 @@
 <?php
 if (logged_in()) {
 	$account_type = $_SESSION['account_type'];
-	if ($account_type === 'admin')
+	if ($account_type === 'admin') {
 		$style = 'css/a-style.css';
-	elseif ($account_type === 'professors')
+		$script = 'js/a-functions.js';
+	} elseif ($account_type === 'professors') {
 		$style = 'css/p-style.css';
-	elseif ($account_type === 'students')
+		$script = 'js/p-functions.js';
+	} elseif ($account_type === 'students') {
 		$style = 'css/s-style.css';
+		$script = 'js/s-functions.js';
+	}
 
 	if ($style)
 		$other_style = '<link href="'.$style.'" rel="stylesheet" type="text/css" />';
+
+	if ($script)
+		$other_script = '<script type="text/javascript" src="'.$script.'"></script>';
 }
 ?>
 <head>
@@ -17,10 +24,10 @@ if (logged_in()) {
 	<title>ProGnosiX</title>
 	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/a-functions.js"></script>
-    <script type="text/javascript" src="js/s-functions.js"></script>
 	<?php
 	if (isset($other_style))
 		echo $other_style;
+	if (isset($other_script))
+		echo $other_script;
 	?>
 </head>
