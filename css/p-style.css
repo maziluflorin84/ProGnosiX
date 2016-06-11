@@ -1,6 +1,6 @@
 /* -- prof profile -- */
 .table-data {
-	width: 50%;
+	width: 100%;
 	margin: 10px 0;
 	border: 2px solid #BDBDBB;
 	border-right-style: none;
@@ -18,4 +18,29 @@
 	border-bottom: 2px solid #BDBDBB;
 	text-align: center;
 	background-color: #E0E0E0;
+}
+
+.side-form-left {
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+}
+#form-list {
+	list-style: none;
+	padding: 0;
+}
+#form-list li {
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+#form-list input {
+	margin-top: 5px;
+}
+.side-form-right {
+	display: inline-block;
+	vertical-align: top;
+}
+.side-right-inner {
+	margin: 0 0 16px 20px;
+	font-size: 15px;
 }
