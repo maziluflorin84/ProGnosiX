@@ -8,8 +8,16 @@ include 'includes/overall/header.php';
 global $mysqli;
 $results=$mysqli->query("SELECT `ID`,`first_name`,`last_name` FROM `professors`");
 $data = array();
-while($row = $results->fetch_assoc())
-    $data[] = $row;
+if($results)
+	while($row = $results->fetch_assoc())
+	    $data[] = $row;
+
+$results=$mysqli->query("SELECT `course_id`, `course_name` FROM `courses`");
+$course_data = array();
+if($results)
+	while($course_row = $results->fetch_assoc())
+		$course_data[] = $course_row;
+
 ?>
 <h2>Admin Page - Add</h2>
     <div class="inner">
@@ -18,11 +26,11 @@ while($row = $results->fetch_assoc())
                 <ul id='add-form'>
                     <li>
                         Choose what to add:<br>
-                        <label><input type="radio" onclick='addFunction(1,<?php echo json_encode($data); ?>);' name="my-radio">student</label>
+                        <label><input type="radio" onclick='addFormStudent();' name="my-radio">student</label>
                         <br>
-                        <label><input type="radio" onclick='addFunction(2,<?php echo json_encode($data); ?>);' name="my-radio">professor</label>
+                        <label><input type="radio" onclick='addFormProfessor();' name="my-radio">professor</label>
                         <br>
-                        <label><input type="radio" onclick='addFunction(3,<?php echo json_encode($data); ?>);' name="my-radio">course</label>
+                        <label><input type="radio" onclick='addFormCourse(<?php echo json_encode($data); ?> , <?php echo json_encode($course_data); ?>);' name="my-radio">course</label>
 
                     </li>
                 </ul>

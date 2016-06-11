@@ -59,3 +59,22 @@
 .form-list input {
     margin-top: 5px;
 }
+
+
+.assist-form {
+	border: 2px solid #bdbdbb;
+	background-color: #F2F2F2;
+}
+
+/* -- search_form -- */
+#search-form {
+	list-style: none;
+	padding: 0;
+}
+#search-form li {
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+#search-form input {
+	margin-top: 5px;
+}
