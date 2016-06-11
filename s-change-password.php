@@ -25,7 +25,9 @@ if (empty($_POST) === false){
             if ($num_rows == 1) {
                 $update = $mysqli->query("UPDATE `students` SET `password` = '$new_password' WHERE `ID` = '$user_id'");
                 if ($update) $success = 'Success!';
-                else $errors[] = 'Wrong old password!';
+                else{
+                    $errors[] = 'Wrong old password!';
+                }
             }
         }
     }
@@ -39,11 +41,11 @@ include 'includes/overall/header.php';
         <ul id="password-save">
             <li>
                 Old Password:<br>
-                <input type="password" id="old_password" name="old_password" />
+                <input type="password" id="old_password" name="old_password" onkeyup="checkPass(); return false;"/>
             </li>
             <li>
                 New Password:<br>
-                <input type="password" id="new_password" name="new_password" />
+                <input type="password" id="new_password" name="new_password" onkeyup="checkPass(); return false;"/>
             </li>
             <li>
                 Confirm Password:<br>
@@ -51,7 +53,7 @@ include 'includes/overall/header.php';
                 <span id="confirm_message" class="confirm_message"></span>
             </li>
             <li>
-                <button type="submit" >Change</button>
+                <button id="reset" type="submit">Change</button>
             </li>
             <?php
                 echo output_errors($errors);

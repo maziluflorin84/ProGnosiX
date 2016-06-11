@@ -37,3 +37,10 @@
     padding: 0;
     font-size:0.8em;
  }
+.ClearButton
+{
+    vertical-align: top;
+    display: inline-block;
+    background: url(../CustomControl/buttons.png?ver=365321878) no-repeat scroll -343px -443px rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
