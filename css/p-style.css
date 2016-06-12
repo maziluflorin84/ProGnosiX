@@ -21,6 +21,9 @@
 .table-data input {
 	font-size: 12px;
 }
+.courses {
+	text-align: center;
+}
 
 .side-form-left {
 	width: 60%;

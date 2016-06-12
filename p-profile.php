@@ -6,26 +6,13 @@ if (!logged_in()) {
 }
 include 'includes/overall/header.php';
 
+$messages = array();
+if(empty($_POST) === false) {
+	$messages = update_courses();
+}
 $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
 $user_id = $_SESSION['user_id'];
-$result = $mysqli->query("SELECT * FROM `courses`");
-$rows = array();
-$ids = array();
-while ($row = $result->fetch_assoc()) {
-	$head_prof_id = $row['head_prof_id'];
-	if ($head_prof_id == $user_id) {
-		$row['head_prof_name'] = $data['first_name'].' '.$data['last_name'];
-		$rows[] = $row;
-	} else {
-		$head_profs = $mysqli->query("SELECT * FROM `professors` WHERE `ID` = '$head_prof_id'");
-		while ($head_prof = $head_profs->fetch_assoc())
-			$row['head_prof_name'] = $head_prof['first_name'].' '.$head_prof['last_name'];
-		$ids = explode(';', $row['assist_prof_ids']);
-		foreach ($ids as $value)
-			if ($value == $user_id)
-				$rows[] = $row;
-	}
-}
+$rows = professor_courses($data, $user_id);
 ?>
 
 	<div class="side-form-left">
@@ -50,7 +37,7 @@ while ($row = $result->fetch_assoc()) {
 		</table>
 
 		<h2>Courses</h2>
-		<table class="table-data" cellspacing="0">
+		<table class="table-data courses" cellspacing="0">
 			<tr>
 				<th>Course Name</th>
 				<th>Head Professor</th>
@@ -58,15 +45,15 @@ while ($row = $result->fetch_assoc()) {
 				<th>Edit Course</th>
 			</tr>
 			<?php
-			foreach ($rows as $prof) {
+			foreach ($rows as $row) {
 				echo
 				'<tr>'.
-					'<td>'.$prof['course_name'].'</td>'.
-					'<td>'.$prof['head_prof_name'].'</td>'.
+					'<td>'.$row['course_name'].'</td>'.
+					'<td>'.$row['head_prof_name'].'</td>'.
 					'<td></td>';
-				if ($prof['head_prof_id'] == $user_id)
+				if ($row['head_prof_id'] == $user_id)
 					echo
-					'<td><input type="submit"  onclick=\'addEditForm('.json_encode($prof).')\' value="Edit"></td>';
+					'<td><input type="submit"  onclick=\'addEditForm('.json_encode($row).')\' value="Edit"></td>';
 				else
 					echo
 					'<td>N/A</td>';
@@ -80,7 +67,10 @@ while ($row = $result->fetch_assoc()) {
 	<div class="side-form-right">
 		<div class="side-right-inner">
 			<div id="load-form">
-
+				<?php
+				if(!empty($messages))
+					echo output_errors($messages);
+				?>
 			</div>
 		</div>
 	</div>
