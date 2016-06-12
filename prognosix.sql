@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2016 at 12:58 AM
+-- Generation Time: Jun 11, 2016 at 10:56 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -40,6 +40,28 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`ID`, `first_name`, `last_name`, `email`, `password`) VALUES
 (1, 'Florin', 'Mazilu', 'maziluflorin84@gmail.com', 'fd2c1dc3b51b086adcc4f1dffb710e8a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `class_id` int(2) NOT NULL,
+  `class_name` int(2) NOT NULL,
+  `class_semi_year` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `class_year` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`class_id`, `class_name`, `class_semi_year`, `class_year`) VALUES
+(1, 1, 'A', 2),
+(2, 2, 'A', 2),
+(3, 3, 'A', 2);
 
 -- --------------------------------------------------------
 
@@ -98,6 +120,7 @@ CREATE TABLE `professors` (
   `last_name` varchar(50) CHARACTER SET latin1 NOT NULL,
   `email` varchar(50) CHARACTER SET latin1 NOT NULL,
   `password` varchar(32) CHARACTER SET latin1 NOT NULL,
+  `course_classes` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `confirmed` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -105,12 +128,12 @@ CREATE TABLE `professors` (
 -- Dumping data for table `professors`
 --
 
-INSERT INTO `professors` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `confirmed`) VALUES
-(1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
-(2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 0),
-(3, 'Sabin-Corneliu', 'M', 'Buraga', 'busaco@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
-(4, 'Alexandru', 'A', 'Coman', 'coman.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
-(5, 'Andrei', 'C', 'Panu', 'panu.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1);
+INSERT INTO `professors` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `course_classes`, `confirmed`) VALUES
+(1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '1:A1-A2;2:2A3', 1),
+(2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 0),
+(3, 'Sabin-Corneliu', 'M', 'Buraga', 'busaco@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 1),
+(4, 'Alexandru', 'A', 'Coman', 'coman.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 1),
+(5, 'Andrei', 'C', 'Panu', 'panu.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 1);
 
 -- --------------------------------------------------------
 
@@ -120,12 +143,11 @@ INSERT INTO `professors` (`ID`, `first_name`, `parent_init`, `last_name`, `email
 
 CREATE TABLE `students` (
   `ID` int(5) NOT NULL,
+  `class_id` int(2) NOT NULL,
   `first_name` varchar(50) CHARACTER SET latin1 NOT NULL,
   `parent_init` varchar(2) CHARACTER SET latin1 NOT NULL,
   `last_name` varchar(50) CHARACTER SET latin1 NOT NULL,
   `email` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `year` int(2) NOT NULL,
-  `class` varchar(10) CHARACTER SET latin1 NOT NULL,
   `password` varchar(32) CHARACTER SET latin1 NOT NULL,
   `confirmed` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -134,8 +156,8 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `year`, `class`, `password`, `confirmed`) VALUES
-(1, 'Florin', 'L', 'Mazilu', 'florin.mazilu@info.uaic.ro', 2, 'B5', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1);
+INSERT INTO `students` (`ID`, `class_id`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `confirmed`) VALUES
+(1, 1, 'Florin', 'L', 'Mazilu', 'florin.mazilu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1);
 
 --
 -- Indexes for dumped tables
@@ -146,6 +168,12 @@ INSERT INTO `students` (`ID`, `first_name`, `parent_init`, `last_name`, `email`,
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`class_id`);
 
 --
 -- Indexes for table `courses`
@@ -180,6 +208,11 @@ ALTER TABLE `students`
 --
 ALTER TABLE `admin`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `class_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `courses`
 --
