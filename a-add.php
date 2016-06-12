@@ -6,49 +6,49 @@ if (!logged_in()) {
 }
 include 'includes/overall/header.php';
 global $mysqli;
-$results=$mysqli->query("SELECT `ID`,`first_name`,`last_name` FROM `professors`");
+$results = $mysqli->query("SELECT `ID`,`first_name`,`last_name` FROM `professors`");
 $data = array();
-if($results)
-	while($row = $results->fetch_assoc())
-	    $data[] = $row;
+if ($results)
+	while ($row = $results->fetch_assoc())
+		$data[] = $row;
 
-$results=$mysqli->query("SELECT `course_id`, `course_name` FROM `courses`");
+$results = $mysqli->query("SELECT `course_id`, `course_name` FROM `courses`");
 $course_data = array();
-if($results)
-	while($course_row = $results->fetch_assoc())
+if ($results)
+	while ($course_row = $results->fetch_assoc())
 		$course_data[] = $course_row;
 
 ?>
-<h2>Admin Page - Add</h2>
-    <div class="inner">
-        <form method="post" action='a-add.php'>
-            <div class="side-form-left">
-                <ul id='add-form'>
-                    <li>
-                        Choose what to add:<br>
-                        <label><input type="radio" onclick='addFormStudent();' name="my-radio">student</label>
-                        <br>
-                        <label><input type="radio" onclick='addFormProfessor();' name="my-radio">professor</label>
-                        <br>
-                        <label><input type="radio" onclick='addFormCourse(<?php echo json_encode($data); ?> , <?php echo json_encode($course_data); ?>);' name="my-radio">course</label>
+	<h2>Admin Page - Add</h2>
+	<div class="inner">
+		<div class="side-form-left">
+			<ul id='add-form'>
+				<li>
+					Choose what to add:<br>
+					<label><input type="radio" onclick='addFormStudent();' name="my-radio">student</label>
+					<br>
+					<label><input type="radio" onclick='addFormProfessor();' name="my-radio">professor</label>
+					<br>
+					<label><input type="radio"
+								  onclick='addFormCourse(<?php echo json_encode($data); ?> , <?php echo json_encode($course_data); ?>);'
+								  name="my-radio">course</label>
 
-                    </li>
-                </ul>
-            </div>
+				</li>
+			</ul>
+		</div>
 
-            <div class="side-form-right">
-                <div class="side-right-inner">
-                    <div id="load-form">
+		<div class="side-form-right">
+			<div class="side-right-inner">
+				<div id="load-form">
 
-                    </div>
-                </div>
-            </div>
-<!---->
-<!--            <div id="load-form">-->
-<!---->
-<!--            </div>-->
+				</div>
+			</div>
+		</div>
+		<!---->
+		<!--            <div id="load-form">-->
+		<!---->
+		<!--            </div>-->
 
 
-        </form>
-    </div>
+	</div>
 <?php include 'includes/overall/footer.php' ?>

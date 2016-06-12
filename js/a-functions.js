@@ -13,7 +13,7 @@
 //}
 
 function addFormStudent(){
-	document.getElementById("load-form").innerHTML = '<form action="" method=post>'+
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/admin-add-student.php" method=post>'+
 			'<ul class="form-list" >'+
 				'<li>First Name:<br>'+
 					'<input type="text" name="first_name" style="width: 200px;">'+
@@ -29,7 +29,7 @@ function addFormStudent(){
 				'</li>'+
 					'<div style="display: inline-block">' +
 						'Year:<br>'+
-						'<select name="year">'+
+						'<select name="class_year">'+
 							'<option value="1">1</option>'+
 							'<option value="2">2</option>'+
 							'<option value="3">3</option>'+
@@ -37,19 +37,19 @@ function addFormStudent(){
 					'</div>' +
 					'<div style="display: inline-block; margin-left: 30px;">'+
 						'Half-Year:<br>'+
-						'<select name="semester">'+
+						'<select name="class_semi_year">'+
 							'<option value="A">A</option>'+
 							'<option value="B">B</option>'+
 						'</select>' +
 					'</div>' +
-				'<li>' +
-						'<label><input type="radio" name="group">1</label>'+
-						'<label><input type="radio" name="group">2</label>'+
-						'<label><input type="radio" name="group">3</label>'+
-						'<label><input type="radio" name="group">4</label>'+
-						'<label><input type="radio" name="group">5</label>'+
-						'<label><input type="radio" name="group">6</label>'+
-						'<label><input type="radio" name="group">7</label>'+
+				'<li><br>Class:<br>'+
+						'<label><input type="radio" name="class_name" value="1">1</label>'+
+						'<label><input type="radio" name="class_name" value="2">2</label>'+
+						'<label><input type="radio" name="class_name" value="3">3</label>'+
+						'<label><input type="radio" name="class_name" value="4">4</label>'+
+						'<label><input type="radio" name="class_name" value="5">5</label>'+
+						'<label><input type="radio" name="class_name" value="6">6</label>'+
+						'<label><input type="radio" name="class_name" value="7">7</label>'+
 				'</li>'+
 				'<li>'+
 					'<input type="submit" value="Add">'+
