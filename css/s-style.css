@@ -44,3 +44,10 @@
     background: url(../CustomControl/buttons.png?ver=365321878) no-repeat scroll -343px -443px rgba(0, 0, 0, 0);
     overflow: hidden;
 }
+
+.select-grades{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}

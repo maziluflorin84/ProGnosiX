@@ -1,5 +1,6 @@
 function addEditForm(course){
 	document.getElementById("load-form").innerHTML = '<form action="" method=post>'+
+<<<<<<< HEAD
 		'<ul id="form-list" >'+
 			'<li>Course Name:<br>' +
 				'<input type="text" name="course_name" style="width: 200px;" value="' + course['course_name'] + '">' +
@@ -10,6 +11,13 @@ function addEditForm(course){
 			'<li>Semester:<br>' +
 				'<input type="text" name="semester" style="width: 200px;" value="' + course['semester'] + '">' +
 			'</li>' +
+=======
+		'<ul id="form-list" >' +
+			'<input type="hidden" name="course_id" value="' + course['course_id'] + '">'+
+			'<li>Course Name:<br>' +
+				'<input type="text" name="course_name" style="width: 200px;" value="' + course['course_name'] + '">' +
+			'</li>' +
+>>>>>>> 7c2153d4f26bfb8b633af07bd91fac84bb145b24
 			'<li>Number of course evaluations:<br>'+
 				'<input type="text" name="course_ev_no" style="width: 200px;" value="' + course['course_ev_no'] + '">' +
 			'</li>' +

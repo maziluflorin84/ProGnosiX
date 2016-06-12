@@ -21,6 +21,12 @@
 .table-data input {
 	font-size: 12px;
 }
+<<<<<<< HEAD
+=======
+.courses {
+	text-align: center;
+}
+>>>>>>> 7c2153d4f26bfb8b633af07bd91fac84bb145b24
 
 .side-form-left {
 	width: 60%;
