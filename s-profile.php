@@ -1,4 +1,4 @@
-<?php
+	<?php
 include 'core/init.php';
 if (!logged_in()) {
 	header('Location: index.php');
@@ -6,6 +6,13 @@ if (!logged_in()) {
 }
 include 'includes/overall/header.php';
 $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
+$class_id = $data['class_id'];
+global $mysqli;
+$class_ids = $mysqli->query("SELECT * FROM `classes` WHERE `class_id` = '$class_id'");
+while ($class_id = $class_ids->fetch_assoc()) {
+	$class = $class_id['class_semi_year'].$class_id['class_name'];
+	$year = $class_id['class_year'];
+}
 ?>
 
 	<h2>Profile</h2>
@@ -28,11 +35,11 @@ $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
         </tr>
         <tr>
             <td style="width: 30%"><b>Year</b></td>
-            <td><?php echo $data['year']; ?></td>
+            <td><?php echo $year; ?></td>
         </tr>
         <tr>
             <td style="width: 30%"><b>Class</b></td>
-            <td><?php echo $data['class']; ?></td>
+            <td><?php echo $class; ?></td>
         </tr>
     </table>
 
