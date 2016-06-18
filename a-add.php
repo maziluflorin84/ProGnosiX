@@ -29,10 +29,7 @@ if ($results)
 					<br>
 					<label><input type="radio" onclick='addFormProfessor();' name="my-radio">professor</label>
 					<br>
-					<label><input type="radio"
-								  onclick='addFormCourse(<?php echo json_encode($data); ?> , <?php echo json_encode($course_data); ?>);'
-								  name="my-radio">course</label>
-
+					<label><input type="radio" onclick='addFormCourse(<?php echo json_encode($data); ?> , <?php echo json_encode($course_data); ?>);' name="my-radio">course</label>
 				</li>
 			</ul>
 		</div>
