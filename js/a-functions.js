@@ -13,7 +13,7 @@
 //}
 
 function addFormStudent(){
-	document.getElementById("load-form").innerHTML = '<form action="core/functions/admin-add-student.php" method=post>'+
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-add-student.php" method=post>'+
 			'<ul class="form-list" >'+
 				'<li>First Name:<br>'+
 					'<input type="text" name="first_name" style="width: 200px;">'+
@@ -60,7 +60,7 @@ function addFormStudent(){
 }
 
 function addFormProfessor(){
-	document.getElementById("load-form").innerHTML = '<form action="" method=post>'+
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-add-professor.php" method=post>'+
 		'<ul class="form-list" >'+
 			'<li>First Name:<br>'+
 				'<input type="text" name="first_name" style="width: 200px;">'+
@@ -83,7 +83,7 @@ function addFormProfessor(){
 
 function addFormCourse(professors,courses){
 	var index;
-	var code = '<form action="" method=post>'+
+	var code = '<form action="core/functions/a-add-course.php" method=post>'+
 		'<ul class="form-list" >'+
 			'<li>Course Name:<br>'+
 				'<input type="text" name="course_name" style="width: 200px;">'+
@@ -114,11 +114,11 @@ function addFormCourse(professors,courses){
 				code = code + '</select>'+
 			'</li>'+
 			'<li>'+
-				'Assistant Teacher for:<br>' +
+				'Assistant Teachers:<br>' +
 				'<div class="assist-form" style=\'overflow:auto; height:100px;\'>'+
 					'<form>'
-						for (index = 0; index < courses.length; ++index){
-							code = code + '<input type="checkbox"'+ courses[index]['course_id'] + '">' + courses[index]['course_name'] + '<br>';
+						for (index = 0; index < professors.length; ++index){
+							code = code + '<input type="checkbox" value = "' + professors[index]['ID'] + '" name=\"assist-profs[]\" id=\"assist-profs\" >' + professors[index]['first_name'] + ' ' + professors[index]['last_name'] + '<br>';
 						}
 					code = code + '</form>' +
 				'</div>'+

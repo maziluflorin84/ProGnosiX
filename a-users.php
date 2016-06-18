@@ -6,25 +6,35 @@ if (!logged_in()) {
 }
 include 'includes/overall/header.php';
 ?>
-
-<h2>Admin Page - Users</h2>
-	<div class="inner">
-		<form method="post" action='a-users.php'>
-			<div class="side-form-left">
+	<div class="side-form-left">
+		<h2>Admin Page - Users</h2>
+		<div class="inner">
+			<form method="post" action='a-search.php'>
 				<ul id='search-form'>
 					<li>Search:<br>
 						<input type="text" name="search_box" style="width: 200px;">
 					</li>
 					<li>
-						<label><input type="radio" name="search">student</label>
-						<label><input type="radio" name="search">professor</label>
+						<label><input type="radio" name="search_type" value="student" checked="checked">student</label>
+						<label><input type="radio" name="search_type" value="professor">professor</label>
 					</li>
 					<input type="submit" value="Search">
 				</ul>
-			</div>
-		</form>
+			</form>
+		</div>
+		<div>
 
+
+		</div>
 	</div>
+	<div class="side-form-right">
+		<div class="side-right-inner">
+			<div id="load-form">
+
+			</div>
+		</div>
+	</div>
+
 <?php include 'includes/overall/footer.php' ?>
 
 
