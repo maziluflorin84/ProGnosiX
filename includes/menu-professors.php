@@ -6,9 +6,9 @@ $location = basename($_SERVER['PHP_SELF']);
 	<a href="p-profile.php" class="<?php echo ($location=='p-profile.php' ? 'border_on' : 'border'); ?>">
 		<span class="menu_button">Profile</span>
 	</a>
-	<a href="p-edit-profile.php" class="<?php echo ($location=='p-edit-profile.php' ? 'border_on' : 'border'); ?>">
-		<span class="menu_button">Edit Profile</span>
-	</a>
+<!--	<a href="p-edit-profile.php" class="--><?php //echo ($location=='p-edit-profile.php' ? 'border_on' : 'border'); ?><!--">-->
+<!--		<span class="menu_button">Edit Profile</span>-->
+<!--	</a>-->
 	<a href="p-evaluation.php" class="<?php echo ($location=='p-evaluation.php' ? 'border_on' : 'border'); ?>">
 		<span class="menu_button">Evaluation</span>
 	</a>

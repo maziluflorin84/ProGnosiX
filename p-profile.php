@@ -8,7 +8,8 @@ include 'includes/overall/header.php';
 
 $messages = array();
 if(empty($_POST) === false) {
-	$messages = update_courses();
+	$update_from = 'professor';
+	$messages = update_courses($update_from);
 }
 $data = return_user_data($_SESSION['user_id'], $_SESSION['account_type']);
 $user_id = $_SESSION['user_id'];
@@ -39,22 +40,29 @@ $rows = professor_courses($data, $user_id);
 		<h2>Courses</h2>
 		<table class="table-data courses" cellspacing="0">
 			<tr>
-				<th>Course Name</th>
-				<th>Head Professor</th>
-				<th>Classes</th>
-				<th>Edit Course</th>
+				<th style="width: 40%">Course Name</th>
+				<th style="width: 40%">Head Professor</th>
+<!--				<th>Classes</th>-->
+				<th style="width: 20%">Edit Course</th>
 			</tr>
 			<?php
-			$courses_classes = explode(';', $data['course_classes']);
+//			$courses_classes = explode(';', $data['course_classes']);
 			foreach ($rows as $row) {
 				echo
 				'<tr>'.
 					'<td>'.$row['course_name'].'</td>'.
 					'<td>'.$row['head_prof_name'].'</td>';
-				foreach ($courses_classes as $course_classes) {
-//		to continue!!!!!!!			$co
-				}
-				echo '<td>'.$data['course_classes'].'</td>';
+//					'<td>';
+//						foreach ($courses_classes as $course_classes) {
+//							$course_classes_data = explode(':', $course_classes);
+//							if ($course_classes_data[0] == $row['course_id']) {
+//								echo $course_classes_data[1];
+//							} else {
+//								echo '-';
+//							}
+//						}
+//				echo
+//					'</td>';
 				if ($row['head_prof_id'] == $user_id)
 					echo
 					'<td><input type="submit"  onclick=\'addEditForm('.json_encode($row).')\' value="Edit"></td>';
