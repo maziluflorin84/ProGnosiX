@@ -75,11 +75,11 @@ function update_courses($update_from) {
 					$project_ev_no = $_POST['project_ev_no'];
 
 					$update = $mysqli->query("UPDATE `courses` SET
-													`course_name` = '$course_name',
-													`course_ev_no` = '$course_ev_no',
-													`seminar_ev_no` = '$seminar_ev_no',
-													`project_ev_no` = '$project_ev_no'
-												WHERE `course_id` = '$course_id'");
+											`course_name` = '$course_name',
+											`course_ev_no` = '$course_ev_no',
+											`seminar_ev_no` = '$seminar_ev_no',
+											`project_ev_no` = '$project_ev_no'
+										WHERE `course_id` = '$course_id'");
 					break;
 				case "admin":
 					$year = $_POST['year'];
@@ -125,4 +125,26 @@ function student_courses($year) {
 		while($course_data = $results->fetch_assoc())
 			$course_rows[] = $course_data;
 	return $course_rows;
+}
+
+function admin_search(){
+	global $mysqli;
+	$search_form = sanitize($_POST['search_box']);
+	$search_type = $_POST['search_type'];
+	$search_result = array();
+	if (empty($search_form) === true) {
+		$errors[] = 'Search field must be filled!';
+	} else {
+		if ($search_type =="student"){
+			$results = $mysqli->query("SELECT `ID`, `first_name`, `parent_init`, `last_name`, `email` FROM `students` WHERE `first_name` LIKE '%$search_form%' OR `last_name` LIKE '%$search_form%'");
+		}
+		else{
+			$results = $mysqli->query("SELECT `ID`, `first_name`, `parent_init`, `last_name`, `email` FROM `professors` WHERE `first_name` LIKE '%$search_form%' OR `last_name` LIKE '%$search_form%'");
+		}
+		while($row = $results->fetch_assoc()){
+			$row['search_type']=$search_type;
+			$search_result[] = $row;
+		}
+	}
+	return $search_result;
 }

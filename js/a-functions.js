@@ -129,3 +129,27 @@ function addFormCourse(professors,courses){
 		'</form>'
 	document.getElementById("load-form").innerHTML = code;
 }
+
+function addEditForm(row){
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-edit-user.php" method=post>'+
+		'<ul class="form-list" >' +
+		'<input type="hidden" id="ID" value="' + row['ID'] + '">'+
+		'<input type="hidden" id="search-type" value="' + row['search_type'] + '">'+
+		'<li>First Name:<br>' +
+		'<input type="text" name="First Name" style="width: 200px;" value="' + row['first_name'] + '">' +
+		'</li>' +
+		'<li>Parent Initial:<br>' +
+		'<input type="text" name="Parent Initial" style="width: 200px;" value="' + row['parent_init'] + '">' +
+		'</li>' +
+		'<li>Last Name:<br>' +
+		'<input type="text" name="Last Name" style="width: 200px;" value="' + row['last_name'] + '">' +
+		'</li>' +
+		'<li>Email:<br>' +
+		'<input type="text" name="Email" style="width: 200px;" value="' + row['email'] + '">' +
+		'</li>' +
+		'<li>' +
+		'<input type="submit" value="Change">' +
+		'</li>' +
+		'</ul>' +
+		'</form>'
+}
