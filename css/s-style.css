@@ -11,13 +11,18 @@
     background-color: #F2F2F2;
     border-right: 2px solid #BDBDBB;
 }
-
 .table-data th {
     padding: 5px 10px;
     border-right: 2px solid #BDBDBB;
     border-bottom: 2px solid #BDBDBB;
     text-align: center;
     background-color: #E0E0E0;
+}
+.grades-table-data {
+	margin-top :50px;
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 #password-save {
@@ -44,10 +49,20 @@
     background: url(../CustomControl/buttons.png?ver=365321878) no-repeat scroll -343px -443px rgba(0, 0, 0, 0);
     overflow: hidden;
 }
+.title-course-evaluation-type{
+	padding-top: 30px;
+	text-align:center;
+	font-weight:bold;
+}
 
 .select-grades{
 	display: inline-block;
 	margin-top: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+.wrong-evaluation-type{
+	padding: 20px 30px 20px 80px;
+	color: red;
 }

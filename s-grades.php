@@ -60,9 +60,21 @@ $course_rows = student_courses($year);
 			while($row = $results->fetch_assoc()){
 				$grades[] = $row;
 			}
+			switch($_POST['evaluation_type']){
+				case 'course_ev':
+					$evaluation_type = 'Course Evaluation';
+					break;
+				case 'seminar_ev':
+					$evaluation_type = 'Seminar Evaluation';
+					break;
+				case 'project_ev':
+					$evaluation_type = 'Project Evaluation';
+					break;
+			}
 
 			if(empty($grades) === false){
-				echo '<table class="table-data" cellspacing="0">';
+				echo '<div class="title-course-evaluation-type">'.$course_row['course_name']." - ".$evaluation_type.'</div>';
+				echo '<table class="table-data grades-table-data" cellspacing="0">';
 				echo '<tr>';
 					echo '<th>Evaluation Number</th>';
 					echo '<th>Professor Grade</th>';
@@ -79,7 +91,7 @@ $course_rows = student_courses($year);
 				}
 				echo '</table>';
 			} else {
-				echo "<p style='color: red;'>"."Please enter a proper evaluation type for the initial course!"."</p>";
+				echo '<div class="wrong-evaluation-type">Please enter a proper evaluation type for the initial course!</div>';
 			}
 		}
 		?>
