@@ -75,11 +75,11 @@ function update_courses($update_from) {
 					$project_ev_no = $_POST['project_ev_no'];
 
 					$update = $mysqli->query("UPDATE `courses` SET
-											`course_name` = '$course_name',
-											`course_ev_no` = '$course_ev_no',
-											`seminar_ev_no` = '$seminar_ev_no',
-											`project_ev_no` = '$project_ev_no'
-										WHERE `course_id` = '$course_id'");
+													`course_name` = '$course_name',
+													`course_ev_no` = '$course_ev_no',
+													`seminar_ev_no` = '$seminar_ev_no',
+													`project_ev_no` = '$project_ev_no'
+												WHERE `course_id` = '$course_id'");
 					break;
 				case "admin":
 					$year = $_POST['year'];
@@ -147,4 +147,11 @@ function admin_search(){
 		}
 	}
 	return $search_result;
+}
+
+function send_email($to, $password) {
+	$subject = 'ProGnosiX account created!';
+	$body = "There is a new ProGnosiX account created in your name!\r\nTo enter your account, please use the following credentials:\r\n\r\nEmail: ".$to."\r\nPassword: ".$password."\r\n\r\n--\r\nProGnosiX";
+	$from = 'From: prognosix.mailing@gmail.ro';
+	mail($to, $subject, $body, $from);
 }
