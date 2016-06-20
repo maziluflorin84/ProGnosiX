@@ -12,14 +12,14 @@ if ($results)
 	while ($row = $results->fetch_assoc())
 		$data[] = $row;
 
-$results = $mysqli->query("SELECT `course_id`, `course_name` FROM `courses`");
-$course_data = array();
-if ($results)
-	while ($course_row = $results->fetch_assoc())
-		$course_data[] = $course_row;
+//$results = $mysqli->query("SELECT `course_id`, `course_name` FROM `courses`");
+//$course_data = array();
+//if ($results)
+//	while ($course_row = $results->fetch_assoc())
+//		$course_data[] = $course_row;
 
 ?>
-	<h2>Admin Page - Add</h2>
+	<h2>Add</h2>
 	<div class="inner">
 		<div class="side-form-left">
 			<ul id='add-form'>
@@ -29,7 +29,7 @@ if ($results)
 					<br>
 					<label><input type="radio" onclick='addFormProfessor();' name="my-radio">professor</label>
 					<br>
-					<label><input type="radio" onclick='addFormCourse(<?php echo json_encode($data); ?> , <?php echo json_encode($course_data); ?>);' name="my-radio">course</label>
+					<label><input type="radio" onclick='addFormCourse(<?php echo json_encode($data); ?>);' name="my-radio">course</label>
 				</li>
 			</ul>
 		</div>

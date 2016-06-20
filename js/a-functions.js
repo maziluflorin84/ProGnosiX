@@ -13,7 +13,7 @@
 //}
 
 function addFormStudent(){
-	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-add-student.php" method=post>'+
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-add-student.php" method="post">'+
 			'<ul class="form-list" >'+
 				'<li>First Name:<br>'+
 					'<input type="text" name="first_name" style="width: 200px;">'+
@@ -60,7 +60,7 @@ function addFormStudent(){
 }
 
 function addFormProfessor(){
-	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-add-professor.php" method=post>'+
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-add-professor.php" method="post">'+
 		'<ul class="form-list" >'+
 			'<li>First Name:<br>'+
 				'<input type="text" name="first_name" style="width: 200px;">'+
@@ -81,9 +81,9 @@ function addFormProfessor(){
 		'</form>'
 }
 
-function addFormCourse(professors,courses){
+function addFormCourse(professors){
 	var index;
-	var code = '<form action="core/functions/a-add-course.php" method=post>'+
+	var code = '<form action="core/functions/a-add-course.php" method="post">'+
 		'<ul class="form-list" >'+
 			'<li>Course Name:<br>'+
 				'<input type="text" name="course_name" style="width: 200px;">'+
@@ -130,26 +130,67 @@ function addFormCourse(professors,courses){
 	document.getElementById("load-form").innerHTML = code;
 }
 
-function addEditForm(row){
-	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-edit-user.php" method=post>'+
+function editUser(row){
+	document.getElementById("load-form").innerHTML = '<form action="core/functions/a-edit-user.php" method="post">'+
 		'<ul class="form-list" >' +
-		'<input type="hidden" id="ID" value="' + row['ID'] + '">'+
-		'<input type="hidden" id="search-type" value="' + row['search_type'] + '">'+
+		'<input type="hidden" name="ID" value="' + row['ID'] + '">'+
+		'<input type="hidden" name="search_type" value="' + row['search_type'] + '">'+
 		'<li>First Name:<br>' +
-		'<input type="text" name="First Name" style="width: 200px;" value="' + row['first_name'] + '">' +
+		'<input type="text" name="first_name" style="width: 200px;" value="' + row['first_name'] + '">' +
 		'</li>' +
 		'<li>Parent Initial:<br>' +
-		'<input type="text" name="Parent Initial" style="width: 200px;" value="' + row['parent_init'] + '">' +
+		'<input type="text" name="parent_init" style="width: 200px;" value="' + row['parent_init'] + '">' +
 		'</li>' +
 		'<li>Last Name:<br>' +
-		'<input type="text" name="Last Name" style="width: 200px;" value="' + row['last_name'] + '">' +
+		'<input type="text" name="last_name" style="width: 200px;" value="' + row['last_name'] + '">' +
 		'</li>' +
 		'<li>Email:<br>' +
-		'<input type="text" name="Email" style="width: 200px;" value="' + row['email'] + '">' +
+		'<input type="text" name="email" style="width: 200px;" value="' + row['email'] + '">' +
 		'</li>' +
 		'<li>' +
-		'<input type="submit" value="Change">' +
+		'<input type="submit" value="Update">' +
 		'</li>' +
 		'</ul>' +
 		'</form>'
+}
+
+function editCourses(row,data){
+	var index;
+	var code = '<form action="core/functions/a-edit-course.php" method="post">'+
+		'<ul class="form-list" >' +
+		'<input type="hidden" name="course_id" value="' + row['course_id'] + '">'+
+		'<li>Course Name:<br>' +
+		'<input type="text" name="course_name" style="width: 200px;" value="' + row['course_name'] + '">' +
+		'</li>' +
+		'<li>Course Year:<br>' +
+		'<input type="text" name="year" style="width: 200px;" value="' + row['year'] + '">' +
+		'</li>' +
+		'<li>Semester:<br>' +
+		'<input type="text" name="semester" style="width: 200px;" value="' + row['semester'] + '">' +
+		'</li>' +
+		'<li>Head Teacher:<br>' +
+		'<select name="professors"><option value=""></option>';
+			for (index = 0; index < data.length; ++index) {
+				code = code + '<option value="' + data[index]['ID'] + '" '
+					+ '>' + data[index]['first_name'] + ' ' + data[index]['last_name'] + '</option>';
+			}
+			code = code + '</select>'+
+		'</li>' +
+		'<li>Assistant Teachers:<br>' +
+				'<div class="assist-form" style=\'overflow:auto; height:100px;\'>'+
+				'<form>'
+			for (index = 0; index < data.length; ++index){
+				code = code + '<input type="checkbox" value = "' + data[index]['ID'] + '" name=\"assist-profs[]\" id=\"assist-profs\" >' + data[index]['first_name'] + ' ' + data[index]['last_name'] + '<br>';
+			}
+
+			code = code + '</form>' +
+		'</div>'+
+		'</li>' +
+		'<li>' +
+		'<input type="submit" value="Update">' +
+		'</li>' +
+		'</ul>' +
+		'</form>'
+
+	document.getElementById("load-form").innerHTML = code;
 }

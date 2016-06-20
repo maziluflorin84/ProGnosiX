@@ -127,7 +127,7 @@ function student_courses($year) {
 	return $course_rows;
 }
 
-function admin_search(){
+function admin_search_user(){
 	global $mysqli;
 	$search_form = sanitize($_POST['search_box']);
 	$search_type = $_POST['search_type'];
@@ -146,6 +146,21 @@ function admin_search(){
 			$search_result[] = $row;
 		}
 	}
+	return $search_result;
+}
+
+function admin_search_course(){
+	global $mysqli;
+	$search_form = sanitize($_POST['search_box']);
+	$search_result = array();
+	if (empty($search_form) === true) {
+		$errors[] = 'Search field must be filled!';
+	} else {
+			$results = $mysqli->query("SELECT `course_id`, `course_name`, `year`, `semester`, `head_prof_id`, `assist_prof_ids` FROM `courses` WHERE `course_name` LIKE '%$search_form%'");
+		}
+		while($row = $results->fetch_assoc()){
+			$search_result[] = $row;
+		}
 	return $search_result;
 }
 

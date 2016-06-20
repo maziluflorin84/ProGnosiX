@@ -11,7 +11,7 @@ $messages = array();
 	<div class="side-form-left search-form-left">
 		<h2>Users</h2>
 		<div class="inner">
-			<form method="post" action=''>
+			<form method="post" action="">
 				<ul id='search-form'>
 					<li>Search:<br>
 						<input type="text" name="search_box" style="width: 200px;">
@@ -25,7 +25,7 @@ $messages = array();
 			</form>
 			<?php
 			if (empty($_POST) === false){
-				$search_result=admin_search();
+				$search_result=admin_search_user();
 				if(empty($search_result) === false){
 					echo '<table class="table-data search-table-data" cellspacing="0">'.
 						'<tr>'.
@@ -41,17 +41,15 @@ $messages = array();
 							'<td>'.$row['parent_init'].'</td>'.
 							'<td>'.$row['last_name'].'</td>'.
 							'<td>'.$row['email'].'</td>'.
-							'<td><input type="submit" value="Edit" onclick=\'addEditForm('.json_encode($row).')\'></td>'.
+							'<td><input type="submit" value="Edit" onclick=\'editUser('.json_encode($row).')\'></td>'.
 							'</tr>';
 					}
 					echo '</table>';
 				} else {
 					echo "<p style='color: red;'>"."The search didn't return any results!"."</p>";
 				}
-
 			}
 			?>
-
 		</div>
 	</div>
 
@@ -66,11 +64,4 @@ $messages = array();
 		</div>
 	</div>
 
-
-
-
 <?php include 'includes/overall/footer.php' ?>
-
-
-
-
