@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2016 at 10:56 PM
+-- Generation Time: Jun 21, 2016 at 12:49 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -59,8 +59,8 @@ CREATE TABLE `classes` (
 --
 
 INSERT INTO `classes` (`class_id`, `class_name`, `class_semi_year`, `class_year`) VALUES
-(1, 1, 'A', 2),
-(2, 2, 'A', 2),
+(1, 1, 'A', 1),
+(2, 2, 'B', 2),
 (3, 3, 'A', 2);
 
 -- --------------------------------------------------------
@@ -86,8 +86,35 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`course_id`, `course_name`, `year`, `semester`, `head_prof_id`, `assist_prof_ids`, `course_ev_no`, `seminar_ev_no`, `project_ev_no`) VALUES
-(1, 'Tehnologii WEB', 2, 2, 3, '4;5', 1, 3, 1),
-(2, 'Proiectarea Algoritmilor', 1, 2, 1, '4', 2, 3, 0);
+(1, 'Tehnologii WEB', 2, 2, 3, '4;5', 0, 3, 11),
+(2, 'Proiectarea Algoritmilor', 1, 2, 1, '4', 1, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evaluations`
+--
+
+CREATE TABLE `evaluations` (
+  `ID` int(5) NOT NULL,
+  `course_id` int(5) NOT NULL,
+  `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `number` int(5) NOT NULL,
+  `prof_id` int(5) NOT NULL,
+  `class_id` int(5) NOT NULL,
+  `max_grade` int(5) NOT NULL DEFAULT '10',
+  `activate` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `evaluations`
+--
+
+INSERT INTO `evaluations` (`ID`, `course_id`, `type`, `number`, `prof_id`, `class_id`, `max_grade`, `activate`) VALUES
+(1, 1, 'seminar_ev', 2, 4, 2, 10, 0),
+(3, 2, 'project_ev', 1, 4, 1, 10, 1),
+(4, 1, 'seminar_ev', 3, 4, 2, 10, 1),
+(5, 1, 'project_ev', 5, 4, 3, 100, 1);
 
 -- --------------------------------------------------------
 
@@ -129,10 +156,10 @@ CREATE TABLE `professors` (
 --
 
 INSERT INTO `professors` (`ID`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `course_classes`, `confirmed`) VALUES
-(1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '1:A1-A2;2:2A3', 1),
+(1, 'Dorel', 'L', 'Lucanu', 'dorel.lucanu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '1:A1,A2;2:A3', 1),
 (2, 'Cosmin', 'N', 'Varlan', 'c.varlan@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 0),
-(3, 'Sabin-Corneliu', 'M', 'Buraga', 'busaco@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 1),
-(4, 'Alexandru', 'A', 'Coman', 'coman.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 1),
+(3, 'Sabin-Corneliu', 'M', 'Buraga', 'busaco@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '1:A5', 1),
+(4, 'Alexandru', 'A', 'Coman', 'coman.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '1:B2,B3,B4;2:A4,A5', 1),
 (5, 'Andrei', 'C', 'Panu', 'panu.andrei@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', '', 1);
 
 -- --------------------------------------------------------
@@ -157,7 +184,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`ID`, `class_id`, `first_name`, `parent_init`, `last_name`, `email`, `password`, `confirmed`) VALUES
-(1, 1, 'Florin', 'L', 'Mazilu', 'florin.mazilu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1);
+(1, 1, 'Florin', 'L', 'Mazilu', 'florin.mazilu@info.uaic.ro', 'fd2c1dc3b51b086adcc4f1dffb710e8a', 1),
+(2, 2, 'Florinel', 'L', 'Mazilu', 'florinmazilu84@yahoo.com', '63953fc15e800226adcb355881674a5f', 0);
 
 --
 -- Indexes for dumped tables
@@ -180,6 +208,12 @@ ALTER TABLE `classes`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indexes for table `evaluations`
+--
+ALTER TABLE `evaluations`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `grades`
@@ -219,6 +253,11 @@ ALTER TABLE `classes`
 ALTER TABLE `courses`
   MODIFY `course_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `evaluations`
+--
+ALTER TABLE `evaluations`
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
@@ -232,7 +271,7 @@ ALTER TABLE `professors`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

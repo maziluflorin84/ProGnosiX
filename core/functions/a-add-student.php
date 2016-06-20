@@ -41,8 +41,12 @@ if (empty($first_name) === true || empty($parent_init) === true || empty($last_n
 				}
 			}
 		}
-		$password = md5('prognosix');
+		$length = 10;
+		$randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+
+		$password = md5($randomString);
 		$update = $mysqli->query("INSERT INTO `students` (`ID`,`class_id`,`first_name`,`parent_init`,`last_name`,`email`,`password`,`confirmed`) VALUES ('', '$class_id', '$first_name', '$parent_init', '$last_name', '$email', '$password', '0')");
+		send_email($email, $randomString);
 		if ($update) $errors[] = 'Success!';
 		else {
 			$errors[] = 'Error!';

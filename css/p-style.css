@@ -30,6 +30,9 @@
 	display: inline-block;
 	vertical-align: top;
 }
+.evaluation-left-side {
+	width: 40%;
+}
 #form-list {
 	list-style: none;
 	padding: 0;

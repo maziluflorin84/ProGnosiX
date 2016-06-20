@@ -113,6 +113,59 @@ function update_courses($update_from) {
 	return $errors;
 }
 
+function create_evaluations() {
+	global $mysqli;
+	$course_id = $_POST['course_id'];
+	$type = $_POST['type'];
+	$number = $_POST['number'];
+	$prof_id = $_POST['prof_id'];
+	$classes = $_POST['class_id'];
+	$class_id = implode(';',$classes);
+	$max_grade = $_POST['max_grade'];
+
+	$errors = array();
+
+	$result = $mysqli->query("SELECT `activate` FROM `evaluations` WHERE `course_id` = '$course_id' AND `type` = '$type' AND `number` = '$number'");
+	$num_rows = $result->num_rows;
+	if ($num_rows == 1) {
+		$errors[] = 'Evaluation session already exists';
+	} else {
+		$update = $mysqli->query("INSERT INTO `evaluations` (`ID`,`course_id`,`type`,`number`,`prof_id`,`class_id`, `max_grade`, `activate`)
+													VALUES ('', '$course_id', '$type', '$number', '$prof_id', '$class_id', '$max_grade', 1)");
+		if ($update) $errors[] = 'Success!';
+		else{
+			$errors[] = $mysqli->error;
+		}
+	}
+	return $errors;
+//		while ($row = $result->fetch_assoc())
+//			foreach ($row AS $value)
+//				$activate = $value;
+//		return $activate;
+
+	//	$errors = array();
+	//
+	//
+	//
+	//
+	//	$update = $mysqli->query("UPDATE `evaluations` SET `activate` = '$assist_prof_ids' WHERE `ID` = '$course_id'");
+	//
+	//	if ($update) $errors[] = 'Success!';
+	//	else{
+	//		$errors[] = $mysqli->error;
+	//	}
+	//	return $errors;
+}
+
+function return_evaluations($prof_id) {
+	global $mysqli;
+	$results = $mysqli->query("SELECT * FROM `evaluations` WHERE `prof_id` = '$prof_id'");
+	while($row = $results->fetch_assoc()){
+//		$row['search_type']=$search_type;
+//		$search_result[] = $row;
+	}
+}
+
 function student_class_year($class_id) {
 	global $mysqli;
 	$class_id_rows = array();

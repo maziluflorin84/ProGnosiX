@@ -46,26 +46,14 @@ $rows = professor_courses($data, $user_id);
 				<th style="width: 20%">Edit Course</th>
 			</tr>
 			<?php
-//			$courses_classes = explode(';', $data['course_classes']);
 			foreach ($rows as $row) {
 				echo
 				'<tr>'.
 					'<td>'.$row['course_name'].'</td>'.
 					'<td>'.$row['head_prof_name'].'</td>';
-//					'<td>';
-//						foreach ($courses_classes as $course_classes) {
-//							$course_classes_data = explode(':', $course_classes);
-//							if ($course_classes_data[0] == $row['course_id']) {
-//								echo $course_classes_data[1];
-//							} else {
-//								echo '-';
-//							}
-//						}
-//				echo
-//					'</td>';
 				if ($row['head_prof_id'] == $user_id)
 					echo
-					'<td><input type="submit"  onclick=\'addEditForm('.json_encode($row).')\' value="Edit"></td>';
+					'<td><input type="submit" onclick=\'addEditForm('.json_encode($row).')\' value="Edit"></td>';
 				else
 					echo
 					'<td>N/A</td>';
@@ -80,6 +68,7 @@ $rows = professor_courses($data, $user_id);
 		<div class="side-right-inner">
 			<div id="load-form">
 				<?php
+//				send_email('cristian.odobescu@info.uaic.ro', 'asdfghjkli');
 				if(!empty($messages))
 					echo output_errors($messages);
 				?>
