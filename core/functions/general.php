@@ -23,6 +23,13 @@ function return_user_data($user_id, $account_type) {
 	return $data;
 }
 
+function return_course_data($course_id){
+	global $mysqli;
+	$result = &$mysqli->query("SELECT * FROM `courses` WHERE `course_id` = '$course_id'");
+	$data = $result->fetch_array();
+	return $data;
+}
+
 function output_errors($messages) {
 	$output = array();
 	foreach ($messages as $error) {
@@ -143,6 +150,20 @@ function admin_search_user(){
 		}
 		while($row = $results->fetch_assoc()){
 			$row['search_type']=$search_type;
+			$search_result[] = $row;
+		}
+	}
+	return $search_result;
+}
+
+function activeSessionsForm(){
+	global $mysqli;
+	$search_result = array();
+	if (empty($search_form) === true) {
+		$errors[] = 'Search field must be filled!';
+	} else {
+			$results = $mysqli->query("SELECT `course_id`, `type`, `number` FROM `evaluations` WHERE `activate` = 1");
+		while($row = $results->fetch_assoc()){
 			$search_result[] = $row;
 		}
 	}

@@ -25,3 +25,20 @@ function checkPass(){
         }
     }
 }
+
+function guessGrades(row){
+		document.getElementById("load-form").innerHTML='<form action="core/functions/s-enter-grade.php" method="post">'+
+			'<ul class="form-list" >' +
+			'<input type="hidden" name="ID" value="' + row['ID'] + '">'+
+			'<input type="hidden" name="course_id" value="' + row['course_id'] + '">'+
+			'<input type="hidden" name="evaluation_type" value="' + row['type'] + '">'+
+			'<input type="hidden" name="evaluation_no" value="' + row['number'] + '">'+
+			'<li>Enter your Grade:<br>' +
+			'<input type="text" name="student_grade" style="width: 200px;" 	>' +
+			'</li>' +
+			'<li>' +
+			'<input type="submit" value="Update">' +
+			'</li>' +
+			'</ul>' +
+			'</form>'
+}
